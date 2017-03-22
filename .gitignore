@@ -1,0 +1,10 @@
+node_modules/
+API_Docs/
+coverage/
+
+*.map
+*.js
+
+yarn-error.log
+
+!index.js
