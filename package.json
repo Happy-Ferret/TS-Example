@@ -4,7 +4,7 @@
   "description": "A short TypeScript example utilising Jest, Yarn and TypeDoc.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest && codecov"
   },
   "author": "Mark \"Happy-Ferret\" Bauermeister",
   "license": "BSD-3-Clause",
@@ -19,6 +19,8 @@
   },
   "dependencies": {},
   "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },

@@ -1,0 +1,22 @@
+env:
+  global:
+    secure: eLbmruUCBsZVRP2WfnbybMs5+MK9zmInzpifsPO3Y/7E9AqrnalqK5F39vsfyRj0XGh78LRhdmqvp3ZYMJEt4gP249TpDgpTqRkblcYLN1/iRAQI3CtbGnzJnPMS0qKfcw9uZ42C4iBGbIjt7+FZQ/irHE3WgJMRq0IqXWlgje5+qAIWj0zwlRnEyiAmszyZm1rHQ925+23wkfA0iW7oF2GjM6qGpOMdeQAXi+nPhOepycrKxySWDcr34jg45HFNb8H2z7EXqUnCtKFG3ZTYmsoqtcrxyzAJRaQvNjKF7A4e2+b+dBPilx1b3RbOKW8sotJYu+N59QUVZCbBm0BXdABQq1THmAD/6vb3xeLSEvJirLhdNd23ETcNYbUvRG1kZZcp2oG7s+SX5qyuBrRM4q7QfR6KZV/9RJTKrsirpwWnmXjh5zyI7CjJ2I6AJlmMsONsc0UY+kk7mttiZy85niCL95hvM7puStSWkonGmygj3xB7wFFXIpkq1SgfhDbVKc7aavEZAMZ1XzMsUijj9SaIxOtjMzAPrcOAIw4G7P8+bUQiC3YI08tudXXLlLEW3Hh75+kOkCjEnBxkZsBgVsGV4Bq7/Ahs9cnIaDOjCLmWcejChvAVZzvkVl9zvyTui4yOVLlGfR3AHxvT8y1IiVrOj9B+ZhhJ+zJKs/rM3R8=
+
+language: node_js
+node_js:
+  - "node"
+
+cache: yarn
+
+before_script:
+  - yarn install
+  - npm install -g typescript@2.1.6
+  - npm install -g typedoc
+  - npm install -g deploy-to-gh-pages shelljs
+  - npm install -g codecov
+
+script:
+  - npm test
+  - typedoc -out API-Docs
+  - touch API-Docs/.nojekyll
+  - deploy-to-gh-pages API-Docs/
